@@ -1,7 +1,17 @@
+import 'package:expense/widget/expense_list/expense_list.dart';
 import 'package:expense/models/expense.dart';
 import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget {
+  const Expenses({super.key});
+
+  @override
+  State<Expenses> createState() {
+    return _ExpensesState();
+  }
+}
+
+class _ExpensesState extends State<Expenses> {
   final List<Expense> _registerdExpens = [
     Expense(
         amount: 19.99,
@@ -24,20 +34,33 @@ class Expenses extends StatefulWidget {
         time: DateTime.now(),
         catagory: Catagory.food),
   ];
-  @override
-  State<Expenses> createState() {
-    return _ExpensesState();
-  }
-}
 
-class _ExpensesState extends State<Expenses> {
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const Text('Modal bottom sheet'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Expense Tracker app"),
+        // backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
       body: Column(
-        children: const [
-          Text('this is chart data'),
-          Text('This is tabs'),
+        children: [
+          const Text('this is chart data'),
+          Expanded(
+            child: ExpenseList(expenses: _registerdExpens),
+          ),
         ],
       ),
     );
