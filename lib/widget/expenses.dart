@@ -1,5 +1,6 @@
 import 'package:expense/widget/expense_list/expense_list.dart';
 import 'package:expense/models/expense.dart';
+import 'package:expense/widget/new_Expense.dart';
 import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget {
@@ -38,7 +39,7 @@ class _ExpensesState extends State<Expenses> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => const Text('Modal bottom sheet'),
+      builder: (ctx) => NewExpense(),
     );
   }
 
@@ -47,7 +48,7 @@ class _ExpensesState extends State<Expenses> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Expense Tracker app"),
-        // backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue,
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
