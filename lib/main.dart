@@ -139,6 +139,13 @@ void main() {
           style: ElevatedButton.styleFrom(
               backgroundColor: kColorscheme.primaryContainer),
         ),
+        textTheme: ThemeData().textTheme.copyWith(
+              titleLarge: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: kColorscheme.onSecondaryContainer,
+              ),
+            ),
       ),
       home: Expenses(),
     ),
