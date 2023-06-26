@@ -116,10 +116,30 @@
 import 'package:expense/widget/expenses.dart';
 import 'package:flutter/material.dart';
 
+var kColorscheme =
+    ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 54, 183, 72));
 void main() {
   runApp(
     MaterialApp(
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData().copyWith(
+        useMaterial3: true,
+        colorScheme: kColorscheme,
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: kColorscheme.onPrimaryContainer,
+          foregroundColor: kColorscheme.primaryContainer,
+        ),
+        cardTheme: const CardTheme().copyWith(
+          color: kColorscheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: kColorscheme.primaryContainer),
+        ),
+      ),
       home: Expenses(),
     ),
   );
