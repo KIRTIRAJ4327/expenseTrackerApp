@@ -118,9 +118,30 @@ import 'package:flutter/material.dart';
 
 var kColorscheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 54, 183, 72));
+var kdarkColorscheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 24, 53, 172),
+  brightness: Brightness.dark,
+);
 void main() {
   runApp(
     MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true,
+        colorScheme: kdarkColorscheme,
+        cardTheme: const CardTheme().copyWith(
+          color: kdarkColorscheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kdarkColorscheme.primaryContainer,
+            foregroundColor: kdarkColorscheme.onPrimaryContainer,
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
         useMaterial3: true,
         colorScheme: kColorscheme,
